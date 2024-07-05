@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apa ini</title>
+    <style>
+        #noBtn {
+            position: absolute;
+            margin-right: 50%;
+            margin-top: 10px;
+        }
+
+        #yesBtn,
+        #noBtn {
+            height: 5rem;
+            width: 5rem;
+        }
+
+        .container {
+            height: 100vh;
+            display: grid;
+            /* border: 1px solid black; */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .row , .col{
+            text-align: center;
+            /* border: 1px solid black; */
+        }
+
+        h2 {
+            display: none;
+            text-align: center;
+            position: relative;
+            font-size: 100px !important;
+            font-weight: bold !important;
+            color: chocolate !important;
+        }
+
+        p {
+            display: none;
+            position: relative;
+            text-align: center;
+        }
+
+        .loveR,
+        .loveL {
+            display: none;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            transform: rotate(-45deg);
+            margin: 50px;
+            
+        }
+
+        .loveR::before,
+        .loveR::after,
+        .loveL::before,
+        .loveL::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: red;
+        }
+
+        .loveR::before,
+        .loveL::before {
+            top: -50px;
+            left: 0;
+        }
+
+        .loveR::after,
+        .loveL::after {
+            left: 50px;
+            top: 0;
+        }
+
+        .loveR span,
+        .loveL span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: rotate(45deg);
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+        }
+
+        @keyframes moveLove {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(-100px) rotate(180deg) scale(0.7);
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-200px) rotate(360deg) scale(0.5);
+                opacity: 0.5;
+            }
+        }
+
+        .love {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-image: url('img/love.png');
+            background-size: cover;
+            animation: moveLove 5s linear infinite;
+        }
+
+        #countdown, .gift {
+            display: none;
+            z-index: 9999;
+            position: relative;
+            font-size: 500px;
+            text-align: center;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col text-center">
+                    <h2>I</h2>
+                    <div class="loveR"></div>
+                    <h2>Desi</h2>
+                    <p> . Xixixixi .😊😊😁😁</p>
+                    <img class="gift" src="img/ball.gif" alt="">
+                    <div id="countdown">3</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <button id="yesBtn" class="btn btn-success">Ya</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <button id="noBtn" class="btn btn-secondary">Tidak</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#yesBtn').click(function () {
+                $('#yesBtn').hide();
+                $('#noBtn').hide();
+                swal({
+                    title: "Ini Baru Pilihan Yang Tepat",
+                    text: "Kamu Memilih Tombol Yang Benar, hehe!",
+                    icon: "success",
+                    button: "Lihat",
+                }).then(() => {
+                    $('.gift').show();
+                    let countdown = 3;
+                    $('#countdown').text(countdown).fadeIn('slow');
+
+                    const interval = setInterval(() => {
+                        countdown--;
+                        $('#countdown').text(countdown);
+                        if (countdown === 0) {
+                            clearInterval(interval);
+                            $('#countdown').hide();
+                            for (let i = 0; i < 100; i++) {
+                                let love = $('<div class="love"></div>');
+                                love.css({
+                                    left: Math.random() * $(window).width() + 'px',
+                                    top: Math.random() * $(window).height() + 'px'
+                                });
+                                $('body').append(love);
+                            }
+                            $('.loveR, .loveL').show();
+                            $('h2').fadeIn('slow');
+                            $('p').fadeIn('slow');
+                        }
+                    }, 1000);
+                });
+            });
+
+            $('#noBtn').hover(function () {
+                // swal({
+                //     title: "Ga Bisa D klik",
+                //     text: "Kamu Salah Menekan!",
+                //     icon: "warning",
+                //     button: "Ok",
+                // })
+                 const x = Math.random() * ($(window).width() - $(this).outerWidth());
+                 const y = Math.random() * ($(window).height() - $(this).outerHeight());
+                 $(this).css({ left: x + 'px', top: y + 'px' });
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
