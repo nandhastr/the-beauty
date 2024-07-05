@@ -114,6 +114,16 @@
                 opacity: 0.5;
             }
         }
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
 
         .love {
             position: absolute;
@@ -121,7 +131,7 @@
             height: 30px;
             background-image: url('img/love2.png');
             background-size: cover;
-            animation: moveLove 5s linear infinite;
+           animation: moveLove 5s linear infinite, fadeInScale 0.5s forwards;
         }
 
         #countdown, .gift {
