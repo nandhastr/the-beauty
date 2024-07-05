@@ -6,16 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apa ini</title>
     <style>
-        #noBtn {
+        #noBtn,#yesBtn {
             position: absolute;
-            margin-right: 50%;
-            margin-top: 10px;
         }
 
         #yesBtn,
         #noBtn {
             height: 5rem;
             width: 5rem;
+            box-shadow: 3px 3px 6px #000;
+        }
+        #yesBtn:hover{
+            background-color: aquamarine;
+            border: none;
         }
 
         .container {
@@ -31,24 +34,23 @@
             /* border: 1px solid black; */
         }
 
-        h2 {
-            display: none;
+        h3 {
+            /* display: none; */
             text-align: center;
-            position: relative;
-            font-size: 100px !important;
+            font-size: 50px !important;
             font-weight: bold !important;
             color: chocolate !important;
         }
 
         p {
-            display: none;
+            /* display: none; */
             position: relative;
             text-align: center;
         }
 
         .loveR,
         .loveL {
-            display: none;
+            /* display: none; */
             width: 100px;
             height: 100px;
             background-color: red;
@@ -137,12 +139,12 @@
     <div class="container">
         <div class="container-fluid">
             <div class="row ">
-                <div class="col text-center">
-                    <h2>I</h2>
+                <div class="col text-center ">
+                    <h1>Mau Gak jadi ....</h1>
+                    <h3>I</h3>
                     <div class="loveR"></div>
-                    <h2>Desi</h2>
+                    <h3>rahasia pokonya</h3>
                     <p> . Xixixixi .😊😊😁😁</p>
-                    <img class="gift" src="img/ball.gif" alt="">
                     <div id="countdown">3</div>
                 </div>
             </div>
@@ -151,26 +153,25 @@
                     <button id="yesBtn" class="btn btn-success">Ya</button>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 text-center">
-                    <button id="noBtn" class="btn btn-secondary">Tidak</button>
-                </div>
-            </div>
+            <button id="noBtn" class="btn btn-secondary">Tidak</button>
         </div>
     </div>
-
+<audio id="backgroundMusic" loop>
+    <source src="song/" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
     <script>
         $(document).ready(function () {
+            const backgroundMusic = document.getElementById('backgroundMusic');
+           
             $('#yesBtn').click(function () {
-                $('#yesBtn').hide();
-                $('#noBtn').hide();
+                $('#yesBtn,#noBtn,h1').hide();
                 swal({
                     title: "Ini Baru Pilihan Yang Tepat",
                     text: "Kamu Memilih Tombol Yang Benar, hehe!",
                     icon: "success",
                     button: "Lihat",
                 }).then(() => {
-                    $('.gift').show();
                     let countdown = 3;
                     $('#countdown').text(countdown).fadeIn('slow');
 
@@ -178,9 +179,9 @@
                         countdown--;
                         $('#countdown').text(countdown);
                         if (countdown === 0) {
+                             backgroundMusic.play();
                             clearInterval(interval);
                             $('#countdown').hide();
-                            $('.gift').hide();
                             for (let i = 0; i < 100; i++) {
                                 let love = $('<div class="love"></div>');
                                 love.css({
@@ -190,7 +191,7 @@
                                 $('body').append(love);
                             }
                             $('.loveR, .loveL').show();
-                            $('h2').show('slow');
+                            $('h3').show('slow');
                             $('p').show('slow');
                         }
                     }, 1000);
