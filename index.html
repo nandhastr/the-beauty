@@ -35,7 +35,7 @@
         }
 
         h3 {
-            /* display: none; */
+            display: none;
             text-align: center;
             font-size: 50px !important;
             font-weight: bold !important;
@@ -43,19 +43,23 @@
         }
 
         p {
-            /* display: none; */
+            display: none;
             position: relative;
             text-align: center;
         }
 
         .loveR,
         .loveL {
-            /* display: none; */
+            display: none;
+            margin-left: auto !important;
+            margin-right: auto !important;
             width: 100px;
             height: 100px;
             background-color: red;
             transform: rotate(-45deg);
             margin: 50px;
+            position: relative;
+         
             
         }
 
@@ -140,10 +144,11 @@
         <div class="container-fluid">
             <div class="row ">
                 <div class="col text-center ">
-                    <h1>Mau Gak jadi ....</h1>
+                    <h1 class="mb-5">Mau Gak jadi ....</h1>
                     <h3>I</h3>
                     <div class="loveR"></div>
-                    <h3>rahasia pokonya</h3>
+                    <!-- <h3>Desi</h3> -->
+                     <h3 class="nama">rahasia</h3>
                     <p> . Xixixixi .😊😊😁😁</p>
                     <div id="countdown">3</div>
                 </div>
@@ -157,13 +162,13 @@
         </div>
     </div>
 <audio id="backgroundMusic" loop>
-    <source src="song/" type="audio/mpeg">
+    <source src="song/Can't Help Falling In Love _ Shania Yan Cover (320).mp3" type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
     <script>
         $(document).ready(function () {
             const backgroundMusic = document.getElementById('backgroundMusic');
-           
+
             $('#yesBtn').click(function () {
                 $('#yesBtn,#noBtn,h1').hide();
                 swal({
