@@ -1,235 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apa ini</title>
-    <style>
-        #noBtn,#yesBtn {
-            position: absolute;
-        }
-
-        #yesBtn,
-        #noBtn {
-            height: 5rem;
-            width: 5rem;
-            box-shadow: 3px 3px 6px #000;
-        }
-        #yesBtn:hover{
-            background-color: aquamarine;
-            border: none;
-        }
-
-        .container {
-            height: 100vh;
-            display: grid;
-            /* border: 1px solid black; */
-            justify-content: center;
-            align-items: center;
-        }
-
-        .row , .col{
-            text-align: center;
-            /* border: 1px solid black; */
-        }
-
-        h3 {
-            display: none;
-            text-align: center;
-            font-size: 50px !important;
-            font-weight: bold !important;
-            color: chocolate !important;
-        }
-
-        p {
-            display: none;
-            position: relative;
-            text-align: center;
-        }
-
-        .loveR,
-        .loveL {
-            display: none;
-            margin-left: auto !important;
-            margin-right: auto !important;
-            width: 100px;
-            height: 100px;
-            background-color: red;
-            transform: rotate(-45deg);
-            margin: 50px;
-            position: relative;
-         
-            
-        }
-
-        .loveR::before,
-        .loveR::after,
-        .loveL::before,
-        .loveL::after {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-color: red;
-        }
-
-        .loveR::before,
-        .loveL::before {
-            top: -50px;
-            left: 0;
-        }
-
-        .loveR::after,
-        .loveL::after {
-            left: 50px;
-            top: 0;
-        }
-
-        .loveR span,
-        .loveL span {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: rotate(45deg);
-            font-size: 18px;
-            color: white;
-            font-weight: bold;
-        }
-
-        @keyframes moveLove {
-            0% {
-                transform: translateY(0) rotate(0deg) scale(1);
-                opacity: 1;
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Apa ini</title>
+        <style>
+            #noBtn,
+            #yesBtn {
+                position: absolute;
             }
 
-            50% {
-                transform: translateY(-100px) rotate(180deg) scale(0.7);
-                opacity: 0.7;
+            #yesBtn,
+            #noBtn {
+                height: 5rem;
+                width: 5rem;
+                box-shadow: 3px 3px 6px #000;
+            }
+            #yesBtn:hover {
+                background-color: aquamarine;
+                border: none;
             }
 
-            100% {
-                transform: translateY(-200px) rotate(360deg) scale(0.5);
-                opacity: 0.5;
+            .container {
+                height: 100vh;
+                display: grid;
+                /* border: 1px solid black; */
+                justify-content: center;
+                align-items: center;
             }
-        }
-        @keyframes fadeInScale {
-            0% {
-                opacity: 0;
-                transform: scale(0);
+
+            .row,
+            .col {
+                text-align: center;
+                /* border: 1px solid black; */
             }
-            100% {
-                opacity: 1;
-                transform: scale(1);
+
+            h3 {
+                display: none;
+                text-align: center;
+                font-size: 50px !important;
+                font-weight: bold !important;
+                color: chocolate !important;
             }
-        }
 
-        .love {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background-image: url('img/love2.png');
-            background-size: cover;
-           animation: moveLove 5s linear infinite, fadeInScale 0.5s forwards;
-        }
+            p {
+                display: none;
+                position: relative;
+                text-align: center;
+            }
 
-        #countdown, .gift {
-            display: none;
-            z-index: 9999;
-            position: relative;
-            font-size: 500px;
-            text-align: center;
-        }
-    </style>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-</head>
+            .loveR,
+            .loveL {
+                display: none;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                width: 100px;
+                height: 100px;
+                background-color: red;
+                transform: rotate(-45deg);
+                margin: 50px;
+                position: relative;
+            }
 
-<body>
+            .loveR::before,
+            .loveR::after,
+            .loveL::before,
+            .loveL::after {
+                content: "";
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                background-color: red;
+            }
 
-    <div class="container">
-        <div class="container-fluid">
-            <div class="row ">
-                <div class="col text-center ">
-                    <h1 class="mb-5">Mau Gak jadi ....</h1>
-                    <h3>I</h3>
-                    <div class="loveR"></div>
-                    <!-- <h3>Desi</h3> -->
-                     <h3 class="nama">rahasia</h3>
-                    <p> . Xixixixi .😊😊😁😁</p>
-                    <div id="countdown">3</div>
+            .loveR::before,
+            .loveL::before {
+                top: -50px;
+                left: 0;
+            }
+
+            .loveR::after,
+            .loveL::after {
+                left: 50px;
+                top: 0;
+            }
+
+            .loveR span,
+            .loveL span {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: rotate(45deg);
+                font-size: 18px;
+                color: white;
+                font-weight: bold;
+            }
+
+            @keyframes moveLove {
+                0% {
+                    transform: translateY(0px) rotate(0deg) scale(0.5);
+                    opacity: 0.5;
+                }
+
+                25% {
+                    transform: translateY(25px) rotate(90deg) scale(0.6);
+                    opacity: 0.6;
+                }
+
+                50% {
+                    transform: translateY(50px) rotate(180deg) scale(0.7);
+                    opacity: 0.7;
+                }
+
+                75% {
+                    transform: translateY(75px) rotate(270deg) scale(0.6);
+                    opacity: 0.6;
+                }
+
+                100% {
+                    transform: translateY(100px) rotate(360deg) scale(0.5);
+                    opacity: 0.5;
+                }
+            }
+
+            .love {
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                background-image: url("img/love2.png");
+                background-size: cover;
+                animation: moveLove 5s linear infinite;
+            }
+
+            #countdown,
+            .gift {
+                display: none;
+                z-index: 9999;
+                position: relative;
+                font-size: 500px;
+                text-align: center;
+            }
+        </style>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col text-center">
+                        <h1 class="mb-5">Mau Gak jadi ....</h1>
+                        <h3>I</h3>
+                        <div class="loveR"></div>
+                        <h3>Desi Sihamita</h3>
+                        <!-- <h3 class="nama">rahasia</h3> -->
+                        <p>. xixixixi .😊😊😁😁</p>
+                        <div id="countdown">3</div>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-12 text-center">
-                    <button id="yesBtn" class="btn btn-success">Ya</button>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <button id="yesBtn" class="btn btn-success">Ya</button>
+                    </div>
                 </div>
+                <button id="noBtn" class="btn btn-secondary">Tidak</button>
             </div>
-            <button id="noBtn" class="btn btn-secondary">Tidak</button>
         </div>
-    </div>
-<audio id="backgroundMusic" loop>
-    <source src="song/Can't Help Falling In Love _ Shania Yan Cover (320).mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
-    <script>
-        $(document).ready(function () {
-            const backgroundMusic = document.getElementById('backgroundMusic');
+        <audio id="backgroundMusic" loop>
+            <source src="song/Can't Help Falling In Love _ Shania Yan Cover (320).mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+        </audio>
+        <script>
+            $(document).ready(function () {
+                const backgroundMusic = document.getElementById("backgroundMusic");
 
-            $('#yesBtn').click(function () {
-                $('#yesBtn,#noBtn,h1').hide();
-                swal({
-                    title: "Ini Baru Pilihan Yang Tepat",
-                    text: "Kamu Memilih Tombol Yang Benar, hehe!",
-                    icon: "success",
-                    button: "Lihat",
-                }).then(() => {
-                    let countdown = 3;
-                    $('#countdown').text(countdown).fadeIn('slow');
+                $("#yesBtn").click(function () {
+                    $("#yesBtn,#noBtn,h1").hide();
+                    swal({
+                        title: "Ini Baru Pilihan Yang Tepat",
+                        text: "Kamu Memilih Tombol Yang Benar, hehe!",
+                        icon: "success",
+                        button: "Lihat",
+                    }).then(() => {
+                        let countdown = 3;
+                        $("#countdown").text(countdown).fadeIn("slow");
 
-                    const interval = setInterval(() => {
-                        countdown--;
-                        $('#countdown').text(countdown);
-                        if (countdown === 0) {
-                             backgroundMusic.play();
-                            clearInterval(interval);
-                            $('#countdown').hide();
-                            for (let i = 0; i < 100; i++) {
-                                let love = $('<div class="love"></div>');
-                                love.css({
-                                    left: Math.random() * $(window).width() + 'px',
-                                    top: Math.random() * $(window).height() + 'px'
-                                });
-                                $('body').append(love);
+                        const interval = setInterval(() => {
+                            countdown--;
+                            $("#countdown").text(countdown);
+                            if (countdown === 0) {
+                                backgroundMusic.play();
+                                clearInterval(interval);
+                                $("#countdown").hide();
+                                for (let i = 0; i < 100; i++) {
+                                    let love = $('<div class="love"></div>');
+                                    love.css({
+                                        left: Math.random() * $(window).width() + "px",
+                                        top: Math.random() * $(window).height() + "px",
+                                    });
+                                    $("body").append(love);
+                                }
+                                $(".loveR, .loveL").show();
+                                $("h3").show("slow");
+                                $("p").show("slow");
                             }
-                            $('.loveR, .loveL').show();
-                            $('h3').show('slow');
-                            $('p').show('slow');
-                        }
-                    }, 1000);
+                        }, 1000);
+                    });
+                });
+
+                $("#noBtn").hover(function () {
+                    // swal({
+                    //     title: "Ga Bisa D klik",
+                    //     text: "Kamu Salah Menekan!",
+                    //     icon: "warning",
+                    //     button: "Ok",
+                    // })
+                    const x = Math.random() * ($(window).width() - $(this).outerWidth());
+                    const y = Math.random() * ($(window).height() - $(this).outerHeight());
+                    $(this).css({ left: x + "px", top: y + "px" });
                 });
             });
+        </script>
 
-            $('#noBtn').hover(function () {
-                // swal({
-                //     title: "Ga Bisa D klik",
-                //     text: "Kamu Salah Menekan!",
-                //     icon: "warning",
-                //     button: "Ok",
-                // })
-                 const x = Math.random() * ($(window).width() - $(this).outerWidth());
-                 const y = Math.random() * ($(window).height() - $(this).outerHeight());
-                 $(this).css({ left: x + 'px', top: y + 'px' });
-            });
-        });
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-</body>
-
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
 </html>
